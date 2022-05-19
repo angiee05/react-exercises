@@ -26,17 +26,7 @@ export class TodoList extends React.Component {
     }
 
     addTodo = () => {
-        this.state.items.push(this.state.input)
-        this.setState({
-            items: this.state.items.map((item,index) => <div><li key={index}>{item}</li><button onClick={this.state.items.slice(index,1)}>Remove</button></div>),
-            input: ''
-        })
-    }
-
-    resetTodoList = () => {
-        this.setState({
-            items: []
-        })
+        this.state.items.push(<li>{this.state.input}</li>)
     }
 
     render() {
