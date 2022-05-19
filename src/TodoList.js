@@ -21,7 +21,7 @@ export class TodoList extends React.Component {
     }
 
     addTodo = () => {
-        this.state.items.push(<div><li>{this.state.input}</li><button>Remove</button></div>)
+        this.state.items.push(<li>{this.state.input}</li>)
         this.setState({
             input: ''
         })
