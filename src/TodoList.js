@@ -6,14 +6,17 @@ export class TodoList extends React.Component {
         input: ''
     }
 
-    removeItem = () => {
-        
+    removeItem = (event) => {
+        const index = event.target.name
+        this.setState({
+            items: this.state.items.splice(index, 1)
+        })
     }
-    
+
 
     componentDidMount = () => {
         this.setState({
-            items: this.state.items.map((item,index) => <div><li key={index}>{item}</li><button onClick={this.state.items.slice(index,1)}>Remove</button></div>)
+            items: this.state.items.map((item, index) => <div key={index}><li >{item}</li><button name={index} onClick={this.removeItem}>Remove</button></div>)
         })
     }
 
@@ -26,7 +29,7 @@ export class TodoList extends React.Component {
     }
 
     addTodo = () => {
-        this.state.items.push(<div><li>{this.state.input}</li><button>Remove</button></div>)
+        this.state.items.push(<div><li>{this.state.input}</li><button onClick={this.removeItem}>Remove</button></div>)
         this.setState({
             input: ''
         })
