@@ -18,9 +18,9 @@ export class Login extends React.Component {
         })
     }
 
-    onLogin = () => {
-        console.log({username: this.state.username, password: this.state.password, remember: this.state.remember})
-    }
+    handleClickLogin = () => {
+        this.props.onLogin(this.state);
+      };
     
     render () {
         return (
@@ -29,7 +29,7 @@ export class Login extends React.Component {
                 <input onChange={this.handleLogin} name="username" value={this.state.username}></input>
                 <input onChange={this.handleLogin} name="password" type="password" value={this.state.password}></input>
                 <input onChange={this.handleLogin} name="remember" type="checkbox" checked={this.state.remember}></input>
-                <button onClick={this.props.onLoginFuction} disabled={!(this.state.username && this.state.password)}>Login</button>
+                <button onClick={this.handleClickLogin} disabled={!(this.state.username && this.state.password)}>Login</button>
             </div>        
         )
     }
