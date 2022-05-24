@@ -6,15 +6,10 @@ export class TodoList extends React.Component {
         input: ''
     }
 
-    removeItem = () => {
-        
-    }
-    
-
-    componentDidMount = () => {
+    removeItem = (index) => {
         this.setState({
-            items: this.state.items.map((item,index) => <div><li key={index}>{item}</li><button onClick={this.state.items.slice(index,1)}>Remove</button></div>)
-        })
+            items: this.state.items.filter((item, i) => i !== index )
+        });
     }
 
     handleInput = (event) => {
@@ -36,7 +31,7 @@ export class TodoList extends React.Component {
         return (
             <div>
                 <div>
-                    <ul>{this.state.items}</ul>
+                    <ul>{this.state.items.map((item,index) => <div key={index}><li  >{item}</li><button onClick={this.removeItem.bind(this, index)} >Remove</button></div>)}</ul>
                 </div>
                 <div>
                     <p>Inserisci un nuovo todo alla lista:</p>
