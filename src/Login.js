@@ -26,6 +26,10 @@ export class Login extends React.Component {
         })
     }
 
+    handleClickLogin = () => {
+        this.props.onLogin(this.state);
+      };
+    
     render () {
         const LoginStyle = {
             background: this.state.password.length < 8 ? 'red' : 'green'
@@ -33,10 +37,12 @@ export class Login extends React.Component {
 
         return (
             <div>
+                {this.onLogin}
                 <input onChange={this.handleLogin} name="username" value={this.state.username}></input>
                 <input onChange={this.handleLogin} name="password" type="password" value={this.state.password}></input>
                 <input onChange={this.handleLogin} name="remember" type="checkbox" checked={this.state.remember}></input>
                 <button style={LoginStyle} onClick={this.handleReset}>Reset</button>
+                <button onClick={this.handleClickLogin} disabled={!(this.state.username && this.state.password)}>Login</button>
             </div>        
         )
     }
