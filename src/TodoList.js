@@ -6,11 +6,10 @@ export class TodoList extends React.Component {
         input: ''
     }
 
-    removeItem = (event) => {
-        const index = event.target.name
+    removeItem = (index) => {
         this.setState({
-            items: this.state.items.splice(index, 1)
-        })
+            items: this.state.items.filter((item, i) => i !== index )
+        });
     }
 
     handleInput = (event) => {
@@ -22,6 +21,7 @@ export class TodoList extends React.Component {
     }
 
     addTodo = () => {
+        this.state.items.push(this.state.input)
         this.setState({
             input: ''
         })
@@ -37,7 +37,7 @@ export class TodoList extends React.Component {
         return (
             <div>
                 <div>
-                    <ul>{this.state.items.map((item) => <li >{item}</li>)}</ul>
+                    <ul>{this.state.items.map((item,index) => <div key={index}><li  >{item}</li><button onClick={this.removeItem.bind(this, index)} >Remove</button></div>)}</ul>
                 </div>
                 <div>
                     <p>Inserisci un nuovo todo alla lista:</p>
