@@ -21,7 +21,7 @@ export class TodoList extends React.Component {
     }
 
     addTodo = () => {
-        this.state.items.push(<li>{this.state.input}</li>)
+        this.state.items.push(this.state.input)
         this.setState({
             input: ''
         })
@@ -31,7 +31,7 @@ export class TodoList extends React.Component {
         return (
             <div>
                 <div>
-                    <ul>{this.state.items}</ul>
+                    <ul>{this.state.items.map((item,index) => <li key={index}>{item}</li>)}</ul>
                 </div>
                 <div>
                     <p>Inserisci un nuovo todo alla lista:</p>
