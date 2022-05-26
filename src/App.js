@@ -1,6 +1,7 @@
 import React from "react";
 import { ClickCounter } from "./ClickCounter";
 import { ClickTracker } from "./ClickTracker";
+import { Container } from "./Container";
 import { Counter } from "./Counter";
 import { HelloWorld } from "./HelloWorld";
 import { InteractiveWelcome } from "./InteractiveWelcome";
@@ -12,7 +13,7 @@ import { Welcome } from "./Welcome";
 export class App extends React.Component {
     render () {
         return (
-        <div>
+        <Container>
             <HelloWorld />
             <Welcome name={<strong>Will</strong>} age={20} />
             <Counter />
@@ -22,6 +23,6 @@ export class App extends React.Component {
             <Login />
             <UncontrolledLogin />            
             <TodoList />            
-        </div>
+        </Container>
     )}
 }

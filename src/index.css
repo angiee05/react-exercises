@@ -2,3 +2,8 @@
     background-color: aquamarine;
     border: 2px solid purple;
 }
+
+.container {
+    background-color: white;
+    border: 2px solid red;
+}
