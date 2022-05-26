@@ -13,7 +13,7 @@ import { Welcome } from "./Welcome";
 export class App extends React.Component {
     render () {
         return (
-        <Container>
+        <Container title="Title">
             <HelloWorld />
             <Welcome name={<strong>Will</strong>} age={20} />
             <Counter />
