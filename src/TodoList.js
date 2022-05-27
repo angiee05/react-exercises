@@ -37,7 +37,7 @@ export class TodoList extends React.Component {
         return (
             <div>
                 <div>
-                    <ul>{this.state.items.map((item,index) => <div key={index}><li  >{item}</li><button onClick={this.removeItem.bind(this, index)} >Remove</button></div>)}</ul>
+                    <ul>{this.props.render(this.state.items, this.removeItem)}</ul>
                 </div>
                 <div>
                     <p>Inserisci un nuovo todo alla lista:</p>
