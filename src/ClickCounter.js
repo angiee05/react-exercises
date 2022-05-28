@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function ClickCounter() {
+export default function ClickCounter(props) {
     const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        props.onCounterChange(count)
+    }, [count])
 
     const incrementCounter = (() => {
         setCount((c) => c + 1)
