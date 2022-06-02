@@ -1,21 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
-export default function ClickCounter(props) {
-    const [count, setCount] = useState(0)
+function useCounter(initialValue = 0) {
+    const[counter, setCounter] = useState(initialValue)
 
-    useEffect(() => {
-        props.onCounterChange(count)
-    }, [count])
-
-    const incrementCounter = (() => {
-        setCount((c) => c + 1)
+    const handleCounterIncrement = (() => {
+        setCounter((c) => c + 1)
     })
+
+    const handleCounterDecrement =(() => {
+        setCounter((c) => c -1)
+    })
+
+    const handleCounterReset = (() => {
+        setCounter(initialValue)
+    })
+
+    return {
+        counter: counter,
+        onIncrement: handleCounterIncrement,
+        onDecrement: handleCounterDecrement,
+        onReset: handleCounterReset
+
+    }
+ 
+}
+
+export default function ClickCounter({initialValue = 0}) {
+    const {counter, onIncrement, onDecrement, onReset} = useCounter(initialValue)
+
+
 
     return (
         <div>
             <div>
-                <h1>{count}</h1>
-                <button onClick={incrementCounter}>Increment</button>
+                <h1>{counter}</h1>
+                <button onClick={onIncrement}>Increment</button>
+                <button onClick={onDecrement}>Decrement</button>
+                <button onClick={onReset}>Reset</button>
             </div>
         </div>
     )
