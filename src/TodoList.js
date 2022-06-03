@@ -3,40 +3,39 @@ import React from "react";
 export class TodoList extends React.Component {
     state = {
         items: ['sleep', 'work', 'study'],
-        input: ''
     }
 
-    componentDidMount = () => {
+    removeItem = (index) => {
         this.setState({
-            items: this.state.items.map((item) => <li>{item}</li>)
-        })
+            items: this.state.items.filter((item, i) => i !== index )
+        });
     }
 
     handleInput = (event) => {
-        const value = event.target.value
+        event.preventDefault()
+
+        let input = event.target.elements.input.value
 
         this.setState({
-            input: value
+            items: [...(this.state.items), input]
         })
+
+        event.target.elements.input.value = ''
     }
 
-    addTodo = () => {
-        this.state.items.push(this.state.input)
-        this.setState({
-            input: ''
-        })
-    }
 
     render() {
         return (
             <div>
                 <div>
-                    <ul>{this.state.items.map((item,index) => <li key={index}>{item}</li>)}</ul>
+                    <ul>{this.state.items.map((item, index) => <li key={index}>{item}</li>)}</ul>
                 </div>
                 <div>
                     <p>Inserisci un nuovo todo alla lista:</p>
-                    <input onChange={this.handleInput} value={this.state.input}></input>
-                    <button onClick={this.addTodo}>Aggiungi</button>
+                    <form onSubmit={this.handleInput}>
+                        <input name="input" ></input>
+                        <button >Aggiungi</button>
+                    </form>
                 </div>
             </div>
         )
