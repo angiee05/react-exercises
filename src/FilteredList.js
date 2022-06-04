@@ -11,6 +11,6 @@ export default function FilteredList(props) {
     const personsFiltered = useMemo(() => persons.filter((person) => person.age > 18 ), [])
 
     return (
-        <ul>{personsFiltered.map((person) => <div><p>name: {person.name}, age: {person.age}, id: {person.id}</p> </div>)}</ul>
+        <ul>{personsFiltered.map((person, i) => <div key={i}><p>name: {person.name}, age: {person.age}, id: {person.id}</p> </div>)}</ul>
     )
 }
