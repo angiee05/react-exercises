@@ -1,25 +1,13 @@
 import React from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Counter from './Counter'
+import GithubUser from './GithubUser'
 import GithubUserList from './GithubUserList'
 import ShowGithubUser from './ShowGithubUser'
 import Welcome from './Welcome'
 
 export default function App() {
     return (
-        <div>
-            <div>
-                <Link to='/'>Go to welcome page</Link> | <Link to='/counter'>Go to counter page</Link>
-            </div>
-            <Routes>
-                <Route path='/' element={<Welcome name="John" age="20" />} />
-                <Route path='/counter' element={<Counter />} />    
-                <Route path='*' element={<h2>Not found</h2>} />
-                <Route path='users' element={<GithubUserList />} >
-                    <Route index element={<h3>Add a user and select it</h3>} />
-                    <Route path=':username' element={<ShowGithubUser />} />
-                </Route>
-            </Routes>
-        </div>
+        <GithubUser username={"angiee05"} />
     )
 }
