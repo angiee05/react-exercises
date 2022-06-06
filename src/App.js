@@ -5,11 +5,9 @@ import Welcome from './Welcome'
 
 export default function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Welcome name="John" age="20" />} />
-                <Route path='/counter' element={<Counter />} />
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route path='/' element={<Welcome name="John" age="20" />} />
+            <Route path='/counter' element={<Counter />} />
+        </Routes>
     )
 }
