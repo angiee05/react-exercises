@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function Counter() {
     const [count, setCount] = useState(0)
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-          setCount(count+1)
-        }, 1000);
-      
-        return () => clearInterval(interval);
-      }, [count]);
-
+    const incrementCounter = (() => {
+        setCount((c) => c + 1)
+    })
 
     return (
         <div>
-            <h1>Counter: {count}</h1>
+            <div>
+                <h1>{count}</h1>
+                <button onClick={incrementCounter}>Increment</button>
+            </div>
         </div>
     )
 }
