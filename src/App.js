@@ -1,28 +1,13 @@
-import React from "react";
-import DisplayLanguage from "./DisplayLanguage";
-import {LanguageContext} from "./LanguageContext"
-export class App extends React.Component {
-    state = {
-        language: "en"
-    }
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Welcome from './Welcome'
 
-    handleChangeLanguage = (event) => {
-        this.setState({
-            language: event.target.value
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <select onChange={this.handleChangeLanguage} value={this.state.language}>
-                    <option value="en">english</option>
-                    <option value="it">italiano</option>
-                </select>
-                <LanguageContext.Provider value={this.state.language}>
-                    <DisplayLanguage />
-                </LanguageContext.Provider>
-            </div>
-        )
-    }
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Welcome name="John" age="20" />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
