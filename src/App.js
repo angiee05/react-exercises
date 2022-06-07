@@ -1,28 +1,17 @@
 import React from "react";
-import DisplayLanguage from "./DisplayLanguage";
-import {LanguageContext} from "./LanguageContext"
-export class App extends React.Component {
-    state = {
-        language: "en"
-    }
+import { decrementCounter, incrementCounter, resetCounter, store } from "./state/CounterReducer";
 
-    handleChangeLanguage = (event) => {
-        this.setState({
-            language: event.target.value
-        })
-    }
+store.subscribe(() => {
+    console.log(store.getState())
+})
+
+store.dispatch(incrementCounter())
+store.dispatch(decrementCounter())
+store.dispatch(resetCounter())
+export class App extends React.Component {
+
 
     render() {
-        return (
-            <div>
-                <select onChange={this.handleChangeLanguage} value={this.state.language}>
-                    <option value="en">english</option>
-                    <option value="it">italiano</option>
-                </select>
-                <LanguageContext.Provider value={this.state.language}>
-                    <DisplayLanguage />
-                </LanguageContext.Provider>
-            </div>
-        )
+        return (<div></div>  )
     }
 }
