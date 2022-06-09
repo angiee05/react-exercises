@@ -23,4 +23,4 @@ export const todosState = createSlice({
 
 })
 
-export const store = createStore(todosState.reducer)
+//export const store = createStore(todosState.reducer)
