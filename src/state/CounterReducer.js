@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+// import { createStore } from "redux";
 
 const defaultState = 0
 
@@ -46,7 +46,7 @@ export function counterReducer(state = defaultState, action) {
     }
 }
 
-export const store = createStore(counterReducer)
+//export const store = createStore(counterReducer)
 
 
 
