@@ -8,7 +8,7 @@ export const todosState = createSlice({
         add: (state, action) => {
             state.push(action.payload)
         },
-        remove: (state, action) => state.filter(user => user.id !== action.payload),
+        remove: (state, action) => state.filter(todo => todo.id !== action.payload),
         edit: (state, action) => {
             const { id, data } = action.payload
             const todo = state.find(t => t.id === id)
